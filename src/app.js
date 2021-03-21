@@ -27,6 +27,10 @@ app.get("/registrationForm",(req,res) => {
     res.render("registrationForm");
 });
 
+app.get("/loginform",(req,res) => {
+    res.render("loginForm");
+});
+
 app.post("/register",async(req,res) => {
     try {
         if(req.body.user1 == 'user'){
@@ -55,7 +59,7 @@ app.post("/register",async(req,res) => {
     } catch (e) {
         res.status(400).send(e);
     }
-})
+});
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
