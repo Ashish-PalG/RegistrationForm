@@ -61,6 +61,19 @@ app.post("/register",async(req,res) => {
     }
 });
 
+app.post('/login', async(req, res) => {
+    try {
+        const uemail = await User.findOne({email:req.body.email});
+        if(req.body.password === uemail.password){
+            res.render("index");
+        }else{
+            console.log("Error");
+        }
+    } catch (e) {
+        res.status(400).send(e);
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
